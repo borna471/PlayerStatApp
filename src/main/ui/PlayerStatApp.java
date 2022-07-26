@@ -61,7 +61,7 @@ public class PlayerStatApp {
         }
     }
 
-    // TODO: fix error (doesnt show filtered list and jumps to next segment)
+    //
     // EFFECTS: filter the list of players by the position the user enter, uses PlayerList methods
     // MODIFIES: this
     private void filterByPosition() {
@@ -102,7 +102,7 @@ public class PlayerStatApp {
         cmpList = new CompareList();
 
         for (Player player : plrList.getPlayerList()) {
-            if (player.getName() == plr) {
+            if (player.getName().equals(plr)) {
                 cmpList.addPlayer(player);
             }
         }
@@ -114,13 +114,19 @@ public class PlayerStatApp {
 
         yesNoController(answr);
 
+
+        System.out.println(cmpList.getCompareList().get(0).getName()
+                + " " + cmpList.getCompareList().get(0).getCat()
+                + " " + cmpList.getCompareList().get(0).getPost()
+                + " " + cmpList.getCompareList().get(0).getGs());
         return cmpList;
+
     }
 
     // MODIFIES: cmpList
     // EFFECTS: process yes/no response from user during openCompPage method
     private void yesNoController(String answr) {
-        if (answr == "y") {
+        if (answr.equals("y")) {
             String plr2;
 
             System.out.println("enter a player's name to add them to the list (capitalize as w regular names)");

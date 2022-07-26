@@ -13,7 +13,7 @@ public class CompareList {
 
     }
 
-    // EFFECTS: adds a player to the given compareList object
+    // EFFECTS: adds a player to the given compareList object, and returns true
     public boolean addPlayer(Player player) {
 
         compareList.add(player);

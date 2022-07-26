@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// a list of Players that will be used for the comparison feature of the program
 public class CompareList {
     private List<Player> compareList;
 

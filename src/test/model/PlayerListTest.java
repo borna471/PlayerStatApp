@@ -97,12 +97,12 @@ class PlayerListTest {
     }
 
 //
-    @Test
-    void testShowRelStats() {
+//     @Test
+//     void testShowRelStats() {
+//
+//        assertEquals(plrList1.showRelStats().size(), 0);
+//        assertEquals(plrList2.showRelStats().get(0).getGs(), 14);
 
-        assertEquals(plrList1.showRelStats().size(), 0);
-        assertEquals(plrList2.showRelStats().get(0).getGs(), 14);
-
-    }
+//    }
 
 }

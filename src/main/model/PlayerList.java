@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// a list of Players that will be used throughout the program, but mainly for then main list of players on home page
+// and for reference
 public class PlayerList {
     private List<Player> playerList;
 
@@ -33,7 +35,8 @@ public class PlayerList {
 
     // REQUIRES: a filtered list of players by position (ie. only one position in the given list)
     // EFFECTS: brings most relevant stats to that position to the top
-    // TODO: call suppressor
+
+    @SuppressWarnings("methodlength")
     public List<Player> showRelStats() {
         List<Player> showRelList = new ArrayList<>();
 
@@ -124,7 +127,9 @@ public class PlayerList {
     // }
 
 
-    public List<Player> getPlayerList() { return playerList;}
+    public List<Player> getPlayerList() {
+        return playerList;
+    }
 }
 
 

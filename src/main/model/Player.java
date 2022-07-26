@@ -1,5 +1,6 @@
 package model;
 
+// each individual Player, objects that will be added to compare and player lists
 public class Player {
 
     private String name;

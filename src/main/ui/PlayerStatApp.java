@@ -6,7 +6,7 @@ import model.PlayerList;
 
 import java.util.Scanner;
 
-// TODO: WRITE ALL METHOD DESCRIPTIONS
+
 
 
 public class PlayerStatApp {
@@ -19,12 +19,13 @@ public class PlayerStatApp {
 
 
 
-
+    // EFFECTS: runs runApp method
     public PlayerStatApp() {
         runApp();
 
     }
 
+    // EFFECTS: intialize console app, bring up needed aspects to get it running
     public void runApp() {
 
         boolean keepGoing = true;
@@ -46,6 +47,7 @@ public class PlayerStatApp {
 
     }
 
+    // EFFECTS: process command from user to take to other parts of app
     private void processCommand(String command) {
         if (command.equals("comp")) {
             openCompPage();
@@ -60,6 +62,8 @@ public class PlayerStatApp {
     }
 
     // TODO: fix error (doesnt show filtered list and jumps to next segment)
+    // EFFECTS: filter the list of players by the position the user enter, uses PlayerList methods
+    // MODIFIES: this
     private void filterByPosition() {
         String position;
 
@@ -86,11 +90,13 @@ public class PlayerStatApp {
     //}
 
     // TODO: fix bug (doesnt show cmpList when user is done)
+    // MODIFIES: cmpList
+    // EFFECTS: run comparison feature and allow user to add players by name from the master player list
     private CompareList openCompPage() {
         String plr;
 
         System.out.println("add players to the comparison list!");
-        System.out.println("enter a player's name to add them to the list (capitalize as w regular names)");
+        System.out.println("enter a player's name to add them to the list (capitalize as with regular names)");
         plr = input.next();
 
         cmpList = new CompareList();
@@ -106,6 +112,14 @@ public class PlayerStatApp {
 
         answr = input.next();
 
+        yesNoController(answr);
+
+        return cmpList;
+    }
+
+    // MODIFIES: cmpList
+    // EFFECTS: process yes/no response from user during openCompPage method
+    private void yesNoController(String answr) {
         if (answr == "y") {
             String plr2;
 
@@ -118,11 +132,9 @@ public class PlayerStatApp {
                 }
             }
         }
-
-
-        return cmpList;
     }
 
+    // EFFECTS: display menu options when initializing console application
     private void displayMenu() {
         System.out.println(player1.getName() + " " + player1.getCat() + " " + player1.getPost() + " " + player1.getGs()
         );
@@ -135,7 +147,9 @@ public class PlayerStatApp {
         System.out.println("\tq -> quit");
     }
 
+    // EFFECTS: initialize the needed values throughout the application
     private void init() {
+
 
         player1 = new Player("Messi", "att", "winger",
                 11, 14, 34, 9,

@@ -63,127 +63,127 @@ public class Player {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    // public void setName(String name) {
+    //     this.name = name;
+    //  }
 
     public String getCat() {
         return cat;
     }
 
-    public void setCat(String cat) {
-        this.cat = cat;
-    }
+    // public void setCat(String cat) {
+    //     this.cat = cat;
+    //  }
 
     public String getPost() {
         return post;
     }
 
-    public void setPost(String post) {
-        this.post = post;
-    }
+//    public void setPost(String post) {
+//        this.post = post;
+//    }
 
     public Integer getGs() {
-        return gs;
+        return gs; 
     }
 
-    public void setGs(Integer gs) {
-        this.gs = gs;
-    }
+//    public void setGs(Integer gs) {
+//        this.gs = gs;
+//    }
 
-    public Integer getAst() {
-        return ast;
-    }
+//    public Integer getAst() {
+//        return ast;
+//    }
 
-    public void setAst(Integer ast) {
-        this.ast = ast;
-    }
+//    public void setAst(Integer ast) {
+//        this.ast = ast;
+//    }
 
-    public Integer getMts() {
-        return mts;
-    }
-
-    public void setMts(Integer mts) {
-        this.mts = mts;
-    }
-
-    public Integer getNpgs() {
-        return npgs;
-    }
-
-    public void setNpgs(Integer npgs) {
-        this.npgs = npgs;
-    }
-
-    public Integer getTotalShts() {
-        return totalShts;
-    }
-
-    public void setTotalShts(Integer totalShts) {
-        this.totalShts = totalShts;
-    }
-
-    public Integer getShtsOnTrgt() {
-        return shtsOnTrgt;
-    }
-
-    public void setShtsOnTrgt(Integer shtsOnTrgt) {
-        this.shtsOnTrgt = shtsOnTrgt;
-    }
-
-    public Integer getTchsInBox() {
-        return tchsInBox;
-    }
-
-    public void setTchsInBox(Integer tchsInBox) {
-        this.tchsInBox = tchsInBox;
-    }
-
-    public Double getGsPer90() {
-        return gsPer90;
-    }
-
-    public void setGsPer90(Double gsPer90) {
-        this.gsPer90 = gsPer90;
-    }
-
-    public Double getGsAndAstPer90() {
-        return gsAndAstPer90;
-    }
-
-    public void setGsAndAstPer90(Double gsAndAstPer90) {
-        this.gsAndAstPer90 = gsAndAstPer90;
-    }
-
-    public Double getNpgsAndAstPer90() {
-        return npgsAndAstPer90;
-    }
-
-    public void setNpgsAndAstPer90(Double npgsAndAstPer90) {
-        this.npgsAndAstPer90 = npgsAndAstPer90;
-    }
-
-    public Double getDrblsPer90() {
-        return drblsPer90;
-    }
-
-    public void setDrblsPer90(Double drblsPer90) {
-        this.drblsPer90 = drblsPer90;
-    }
-
-    public Integer getDrbls() {
-        return drbls;
-    }
-
-    public void setDrbls(Integer drbls) {
-        this.drbls = drbls;
-    }
-
-    public Integer getKypases() {
-        return kypases;
-    }
-
-    public void setKypases(Integer kypases) {
-        this.kypases = kypases;
-    }
+//    public Integer getMts() {
+//        return mts;
+//    }
+//
+//    public void setMts(Integer mts) {
+//        this.mts = mts;
+//    }
+//
+//    public Integer getNpgs() {
+//        return npgs;
+//    }
+//
+//    public void setNpgs(Integer npgs) {
+//        this.npgs = npgs;
+//    }
+//
+//    public Integer getTotalShts() {
+//        return totalShts;
+//    }
+//
+//    public void setTotalShts(Integer totalShts) {
+//        this.totalShts = totalShts;
+//    }
+//
+//    public Integer getShtsOnTrgt() {
+//        return shtsOnTrgt;
+//    }
+//
+//    public void setShtsOnTrgt(Integer shtsOnTrgt) {
+//        this.shtsOnTrgt = shtsOnTrgt;
+//    }
+//
+//    public Integer getTchsInBox() {
+//        return tchsInBox;
+//    }
+//
+//    public void setTchsInBox(Integer tchsInBox) {
+//        this.tchsInBox = tchsInBox;
+//    }
+//
+//    public Double getGsPer90() {
+//        return gsPer90;
+//    }
+//
+//    public void setGsPer90(Double gsPer90) {
+//        this.gsPer90 = gsPer90;
+//    }
+//
+//    public Double getGsAndAstPer90() {
+//        return gsAndAstPer90;
+//    }
+//
+//    public void setGsAndAstPer90(Double gsAndAstPer90) {
+//        this.gsAndAstPer90 = gsAndAstPer90;
+//    }
+//
+//    public Double getNpgsAndAstPer90() {
+//        return npgsAndAstPer90;
+//    }
+//
+//    public void setNpgsAndAstPer90(Double npgsAndAstPer90) {
+//        this.npgsAndAstPer90 = npgsAndAstPer90;
+//    }
+//
+//    public Double getDrblsPer90() {
+//        return drblsPer90;
+//    }
+//
+//    public void setDrblsPer90(Double drblsPer90) {
+//        this.drblsPer90 = drblsPer90;
+//    }
+//
+//    public Integer getDrbls() {
+//        return drbls;
+//    }
+//
+//    public void setDrbls(Integer drbls) {
+//        this.drbls = drbls;
+//    }
+//
+//    public Integer getKypases() {
+//        return kypases;
+//    }
+//
+//    public void setKypases(Integer kypases) {
+//        this.kypases = kypases;
+//    }
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// tests the PlayerList class
 class PlayerListTest {
 
     private PlayerList plrList1;

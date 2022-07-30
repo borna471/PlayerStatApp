@@ -56,6 +56,13 @@ desired players to a compare-list
 
 - As a user, I want to be able to filter players by positions
 
+// not a proper feature, must add new one
 - As a user, I want to be able to navigate between these tabs
   and features through a menu
-- 
+
+### Data Persistence Stories
+
+- As a user, I want to be able to save my list of players to 
+compare (players in my compare list)
+- As a user, I want to be able to load a previously saved
+compare list of players

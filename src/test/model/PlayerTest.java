@@ -7,6 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// tests the Player class
 class PlayerTest {
     private Player player1;
     private Player player2;

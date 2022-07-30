@@ -4,15 +4,22 @@ import model.CompareList;
 import model.Player;
 import model.PlayerList;
 
+import java.sql.DataTruncation;
+import java.util.List;
 import java.util.Scanner;
 
 
 
-
+// Runs app initializing console with all features using methods from model classes
 public class PlayerStatApp {
     private Scanner input;
     private Player player1;
     private Player player2;
+
+    private Player player3;
+    private Player player4;
+    private Player player5;
+
     private PlayerList plrList;
     private CompareList cmpList;
 
@@ -69,10 +76,8 @@ public class PlayerStatApp {
 
         System.out.println("filter by what position?");
         position = input.next();
-        for (Player player : plrList.filterByPost(position)) {
-            System.out.println(player.getName() + " " + player.getCat() + " " + player.getPost() + " " + player.getGs()
-            );
-        }
+
+        displayPlayerList(plrList.filterByPost(position));
 
         input.useDelimiter("\n");
         System.out.println("enter 'back' to return to main menu\n");
@@ -115,17 +120,21 @@ public class PlayerStatApp {
         yesNoController(answr);
 
 
-        System.out.println(cmpList.getCompareList().get(0).getName()
-                + " " + cmpList.getCompareList().get(0).getCat()
-                + " " + cmpList.getCompareList().get(0).getPost()
-                + " " + cmpList.getCompareList().get(0).getGs());
+        displayPlayerList(cmpList.getCompareList());
+
+
+        System.out.println("enter 'back' to return to main menu\n");
+        if (input.next() == "back") {
+            init();
+        }
+
         return cmpList;
 
     }
 
     // MODIFIES: cmpList
     // EFFECTS: process yes/no response from user during openCompPage method
-    private void yesNoController(String answr) {
+    private boolean yesNoController(String answr) {
         if (answr.equals("y")) {
             String plr2;
 
@@ -133,27 +142,43 @@ public class PlayerStatApp {
             plr2 = input.next();
 
             for (Player player : plrList.getPlayerList()) {
-                if (player.getName() == plr2) {
+                if (player.getName().equals(plr2)) {
                     cmpList.addPlayer(player);
                 }
             }
+
+            return true;
         }
+
+        return false;
     }
 
     // EFFECTS: display menu options when initializing console application
     private void displayMenu() {
-        System.out.println(player1.getName() + " " + player1.getCat() + " " + player1.getPost() + " " + player1.getGs()
-        );
-        System.out.println(player2.getName() + " " + player2.getCat() + " " + player2.getPost() + " " + player2.getGs()
-        );
-        System.out.println("\nSelect from:");
+
+        displayPlayerList(plrList.getPlayerList());
+
+        System.out.println("Select from:");
         System.out.println("\tcomp -> compare list page");
         System.out.println("\trel -> rel stats");
         System.out.println("\tfilter -> filter by given position");
         System.out.println("\tq -> quit");
     }
 
+
+    private String displayPlayerList(List<Player> players) {
+        for (Player player : players) {
+            System.out.println(player.getName() + " " + player.getCat() + " " + player.getPost() + " "
+                    + player.getGs() + " " + player.getAst() + " " + player.getMts());
+        }
+        System.out.println("\n");
+
+        return "no players found...";
+    }
+
+
     // EFFECTS: initialize the needed values throughout the application
+    @SuppressWarnings("methodlength")
     private void init() {
 
 
@@ -167,9 +192,28 @@ public class PlayerStatApp {
                 133, 55, 0, 36, 30,
                 0.62, 0.69, 0.62, 0.77);
 
+        player3 = new Player("Benzema", "att", "centre-forward",
+                42, 13, 44, 33,
+                174, 81, 0, 0, 75,
+                1.01, 1.34, 1.08, 1.22);
+
+        player4 = new Player("Lewandowski", "att", "striker",
+                50, 6, 46, 42,
+                191, 96, 0, 0, 61,
+                1.13, 1.26, 1.08, 1.01);
+
+        player5 = new Player("Salah", "att", "winger",
+                31, 15, 51, 25,
+                184, 70, 0, 0, 71,
+                0.70, 1.03, 0.90, 1.96);
+
+
         plrList = new PlayerList();
         plrList.getPlayerList().add(player1);
         plrList.getPlayerList().add(player2);
+        plrList.getPlayerList().add(player3);
+        plrList.getPlayerList().add(player4);
+        plrList.getPlayerList().add(player5);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }

@@ -38,15 +38,15 @@ public class PlayerList {
 
 
 
-    // MODIFIES: this
-    // EFFECTS: adds player to playerList
-    private boolean addPlyer(Player player) {
-
-        playerList.add(player);
-
-        return true;
-
-    }
+//    // MODIFIES: this
+//    // EFFECTS: adds player to playerList
+//    private boolean addPlyer(Player player) {
+//
+//        playerList.add(player);
+//
+//        return true;
+//
+//    }
 
     // private void sortByStat() {
 

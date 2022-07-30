@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// tests the CompareList class
 class CompareListTest {
     private List<Player> list1;
     private List<Player> list2;

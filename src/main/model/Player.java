@@ -84,25 +84,25 @@ public class Player {
 //    }
 
     public Integer getGs() {
-        return gs; 
+        return gs;
     }
 
 //    public void setGs(Integer gs) {
 //        this.gs = gs;
 //    }
 
-//    public Integer getAst() {
-//        return ast;
-//    }
+    public Integer getAst() {
+        return ast;
+    }
 
 //    public void setAst(Integer ast) {
 //        this.ast = ast;
 //    }
 
-//    public Integer getMts() {
-//        return mts;
-//    }
-//
+    public Integer getMts() {
+        return mts;
+    }
+
 //    public void setMts(Integer mts) {
 //        this.mts = mts;
 //    }

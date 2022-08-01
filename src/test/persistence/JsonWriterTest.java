@@ -38,12 +38,12 @@ public class JsonWriterTest extends JsonTest {
     void testWriterEmptyCompareList() {
         try {
             CompareList cl = new CompareList();
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyCompareList.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptyCompareListv2.json");
             writer.open();
             writer.write(cl);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyCompareList.json");
+            JsonReader reader = new JsonReader("./data/testWriterEmptyCompareListv2.json");
             cl = reader.read();
             assertEquals(0, cl.getCompareList().size());
         } catch (IOException e) {
@@ -68,12 +68,12 @@ public class JsonWriterTest extends JsonTest {
             CompareList cl = new CompareList();
             cl.addPlayer(player1);
             cl.addPlayer(player2);
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralCompareList.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralCompareListv2.json");
             writer.open();
             writer.write(cl);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralCompareList.json");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralCompareListv2.json");
             cl = reader.read();
             List<Player> players = cl.getCompareList();
             assertEquals(2, players.size());

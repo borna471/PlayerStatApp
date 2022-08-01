@@ -3,15 +3,19 @@ package ui;
 import model.CompareList;
 import model.Player;
 import model.PlayerList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.DataTruncation;
 import java.util.List;
 import java.util.Scanner;
 
 
-
 // Runs app initializing console with all features using methods from model classes
 public class PlayerStatApp {
+    private static final String JSON_STORE = "./data/CompareList.json";
     private Scanner input;
     private Player player1;
     private Player player2;
@@ -22,6 +26,10 @@ public class PlayerStatApp {
 
     private PlayerList plrList;
     private CompareList cmpList;
+    private CompareList compareList;
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
 
 
@@ -94,17 +102,22 @@ public class PlayerStatApp {
 
     //}
 
-    // TODO: fix bug (doesnt show cmpList when user is done)
+
     // MODIFIES: cmpList
     // EFFECTS: run comparison feature and allow user to add players by name from the master player list
     private CompareList openCompPage() {
         String plr;
 
+        cmpList = new CompareList();
+
         System.out.println("add players to the comparison list!");
+
+        loadtool();
+
         System.out.println("enter a player's name to add them to the list (capitalize as with regular names)");
         plr = input.next();
 
-        cmpList = new CompareList();
+
 
         for (Player player : plrList.getPlayerList()) {
             if (player.getName().equals(plr)) {
@@ -112,29 +125,66 @@ public class PlayerStatApp {
             }
         }
 
-        System.out.println("would you like to add another player? (y/n)");
-        String answr;
+//        System.out.println("would you like to add another player? (y/n)");
+//        String answr;
+//
+//        answr = input.next();
 
-        answr = input.next();
+        String plr2;
 
-        yesNoController(answr);
+        System.out.println("\nenter a second player's name to add them to the list (capitalize as w regular names)\n");
+        plr2 = input.next();
+
+        for (Player player : plrList.getPlayerList()) {
+            if (player.getName().equals(plr2)) {
+                cmpList.addPlayer(player);
+            }
+        }
 
 
         displayPlayerList(cmpList.getCompareList());
 
-
-        System.out.println("enter 'back' to return to main menu\n");
-        if (input.next() == "back") {
-            init();
-        }
+        closeFunction();
 
         return cmpList;
 
     }
 
+    // EFFECTS: loads prompts and runs methods for loading previous saves if needed
+    private void loadtool() {
+        String load;
+        System.out.println("would you like to load your previously saved list? (y/n)");
+        load = input.next();
+
+        if (load.equals("y")) {
+            loadCompareList();
+            System.out.println("\n");
+            displayPlayerList(cmpList.getCompareList());
+            System.out.println("your previous list is loaded!\n");
+            init();
+        }
+    }
+
+    // EFFECTS: prompts and processes answers to end the compList function page
+    private void closeFunction() {
+        String backOrSave;
+
+        System.out.println("- enter 'back' to return to main menu");
+        System.out.println("- enter 'save' to save the current compareList\n");
+        backOrSave = input.next();
+        if (backOrSave.equals("back")) {
+            init();
+        } else if (backOrSave.equals("save")) {
+            saveCompareList();
+            System.out.println("\n");
+            init();
+        }
+
+    }
+
     // MODIFIES: cmpList
-    // EFFECTS: process yes/no response from user during openCompPage method
-    private boolean yesNoController(String answr) {
+    // EFFECTS: process yes/no response to adding another player from user during openCompPage method
+    private boolean yesNoAddPlayer(String answr) {
         if (answr.equals("y")) {
             String plr2;
 
@@ -153,6 +203,29 @@ public class PlayerStatApp {
         return false;
     }
 
+    // EFFECTS: saves the comparelist to file
+    private void saveCompareList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(cmpList);
+            jsonWriter.close();
+            System.out.println("Saved list to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads comparelist from file
+    private void loadCompareList() {
+        try {
+            cmpList = jsonReader.read();
+            System.out.println("Loaded list from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
     // EFFECTS: display menu options when initializing console application
     private void displayMenu() {
 
@@ -165,7 +238,7 @@ public class PlayerStatApp {
         System.out.println("\tq -> quit");
     }
 
-
+    // EFFECTS: displays every player within a given player list
     private String displayPlayerList(List<Player> players) {
         for (Player player : players) {
             System.out.println(player.getName() + " " + player.getCat() + " " + player.getPost() + " "
@@ -175,6 +248,7 @@ public class PlayerStatApp {
 
         return "no players found...";
     }
+
 
 
     // EFFECTS: initialize the needed values throughout the application
@@ -207,6 +281,9 @@ public class PlayerStatApp {
                 184, 70, 0, 0, 71,
                 0.70, 1.03, 0.90, 1.96);
 
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
 
         plrList = new PlayerList();
         plrList.getPlayerList().add(player1);

@@ -1,0 +1,21 @@
+{
+    "players": [
+        {
+            "name": "Messi",
+            "category": "att",
+            "position": "winger",
+            "goals": 11,
+            "assists": 14,
+            "matches": 34
+        },
+        {
+            "name": "Ronaldo",
+            "category": "att",
+            "position": "striker",
+            "goals": 24,
+            "assists": 3,
+            "matches": 39
+        }
+    ]
+
+}

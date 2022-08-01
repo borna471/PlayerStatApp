@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // each individual Player, objects that will be added to compare and player lists
-public class Player {
+public class Player implements Writable {
 
     private String name;
     private String cat;
@@ -59,6 +62,19 @@ public class Player {
     }
 
 
+    // modeled after JsonSerializationDemo.model.Thingy (as provided for this project)
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("category", cat);
+        json.put("position", post);
+        json.put("goals", gs);
+        json.put("assists", ast);
+        json.put("matches", mts);
+        return json;
+    }
+
     public String getName() {
         return name;
     }
@@ -102,6 +118,8 @@ public class Player {
     public Integer getMts() {
         return mts;
     }
+
+
 
 //    public void setMts(Integer mts) {
 //        this.mts = mts;

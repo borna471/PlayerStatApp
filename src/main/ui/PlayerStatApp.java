@@ -9,12 +9,18 @@ import persistence.JsonWriter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.AttributedCharacterIterator;
 import java.util.List;
 import java.util.Scanner;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.*;
+import javax.tools.Tool;
 
 
 // Runs app initializing console with all features using methods from model classes
@@ -34,6 +40,9 @@ public class PlayerStatApp extends JFrame {
     private JLabel playerBoxLabel;
     private DefaultListModel cmprList;
     private JList playerList;
+    private ImageIcon imageIcon;
+    // private JLabel displayField;
+    private JLabel imageLabel;
 
     private Scanner input;
     private Player player1;
@@ -79,6 +88,9 @@ public class PlayerStatApp extends JFrame {
 
     }
 
+    // MODIFIES: plrList, frame, panel
+    // EFFECTS: initialize all the fields and aspects of the GUI
+    @SuppressWarnings("methodlength")
     private void initGraphics() {
 
         player1 = new Player("Messi", "att", "winger",
@@ -120,6 +132,8 @@ public class PlayerStatApp extends JFrame {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
 
+        imageIcon = new ImageIcon("./data/img.png");
+
         frame.setLayout(new BorderLayout());
         frame.setSize(WIDTH, HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -130,11 +144,14 @@ public class PlayerStatApp extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(200, 200, 200, 200));
         panel.setLayout(new GridLayout(0, 1));
         // frame.setContentPane(panel);
-        
+
         displayMenuGUI();
 
     }
 
+    // MODIFIES: frame, panel
+    // EFFECTS: display the main interface of the GUI, showing the needed buttons and mapping them on the panel
+    // and frame, initializing their own functionalities as well
     private void displayMenuGUI() {
 
         frame.add(panel, BorderLayout.CENTER);
@@ -144,27 +161,14 @@ public class PlayerStatApp extends JFrame {
         frame.add(players, BorderLayout.NORTH);
         players.setVisible(true);
 
-        loadSavedList = new JButton("Load saved list");
-        loadSavedList.setPreferredSize(new Dimension(70, 70));
-        panel.add(loadSavedList, CENTER_ALIGNMENT);
-        loadSavedList.setVisible(true);
-        loadSavedList.addActionListener(new LoadListListener());
+        initLoadButton();
 
-        saveCurrentList = new JButton("Save Current List");
-        panel.add(saveCurrentList, CENTER_ALIGNMENT);
-        saveCurrentList.setVisible(true);
-        saveCurrentList.addActionListener(new SaveListListener());
+        initSaveButton();
 
-        addPlayer = new JButton("Add Player");
-        addPlayer.setPreferredSize(new Dimension(100, 100));
-        panel.add(addPlayer, CENTER_ALIGNMENT);
-        addPlayer.setVisible(true);
-        addPlayer.addActionListener(new AddPlayerListener());
+        initAddButton();
 
-        filterCurrentList = new JButton("Remove Player");
-        panel.add(filterCurrentList, CENTER_ALIGNMENT);
-        filterCurrentList.setVisible(true);
-        filterCurrentList.addActionListener(new RemovePlayerListener());
+        initRemoveButton();
+
 
         addPlayerBox = new JTextField(20);
         addPlayerBox.setBounds(100, 20, 165, 25);
@@ -174,9 +178,9 @@ public class PlayerStatApp extends JFrame {
         panel.add(playerBoxLabel);
 
         playerList = new JList(cmprList);
-        playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        playerList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         playerList.setSelectedIndex(0);
-        playerList.setVisibleRowCount(3);
+        playerList.setVisibleRowCount(6);
         JScrollPane listScrollPane = new JScrollPane(playerList);
 
         frame.add(playerList, BorderLayout.SOUTH);
@@ -188,8 +192,41 @@ public class PlayerStatApp extends JFrame {
 
     }
 
+    private void initRemoveButton() {
+        filterCurrentList = new JButton("Remove Player");
+        panel.add(filterCurrentList, CENTER_ALIGNMENT);
+        filterCurrentList.setVisible(true);
+        filterCurrentList.addActionListener(new RemovePlayerListener());
+    }
+
+    private void initAddButton() {
+        addPlayer = new JButton("Add Player");
+        addPlayer.setPreferredSize(new Dimension(100, 100));
+        panel.add(addPlayer, CENTER_ALIGNMENT);
+        addPlayer.setVisible(true);
+        addPlayer.addActionListener(new AddPlayerListener());
+    }
+
+    private void initSaveButton() {
+        saveCurrentList = new JButton("Save Current List");
+        panel.add(saveCurrentList, CENTER_ALIGNMENT);
+        saveCurrentList.setVisible(true);
+        saveCurrentList.addActionListener(new SaveListListener());
+    }
+
+    private void initLoadButton() {
+
+        loadSavedList = new JButton("Load saved list");
+        loadSavedList.setPreferredSize(new Dimension(70, 70));
+        panel.add(loadSavedList, CENTER_ALIGNMENT);
+        loadSavedList.setVisible(true);
+        loadSavedList.addActionListener(new LoadListListener());
+    }
 
 
+    // MODIFIES: cmprList
+    // EFFECTS: method called when add player button is pressed, take string entered by user, if player with matching
+    // name found in plrList, add them to cmprList in a way it gets displayed, otherwise nothing happens
     private class AddPlayerListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -207,21 +244,63 @@ public class PlayerStatApp extends JFrame {
                 }
             }
 
+            if (plr.equals(player1.getName())) {
+
+                imageLabel = new JLabel(imageIcon);
+                imageLabel.setSize(new Dimension(30,30));
+                imageLabel.setIcon(imageIcon);
+                // imageLabel.setSize(5, 5);
+                frame.add(imageLabel, BorderLayout.EAST);
+            }
+
+
+
+
+                //try {
+
+                    // image = ImageIO.read(new File("data/tobs.jpg"));
+
+                // imageIcon = new ImageIcon(getClass().getResource("tobs.jpg"));
+
+                    // imageIcon = new ImageIcon();
+                // playerBoxLabel = new JLabel(imageIcon);
+//                } catch (Exception exception) {
+//                    System.out.println("Image could not be found!");
+//                }
+
+
+                // playerBoxLabel.setVisible(true);
+
+
+            // }
+
+
+
         }
     }
 
+    // MODIFIES: cmprList
+    // EFFECTS: method called when remove player button is pressed, removes the selected player in the list from the
+    // list
     private class RemovePlayerListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             // String post = addPlayerBox.getText();
 
             int index = playerList.getSelectedIndex();
+            try {
+                cmprList.remove(index);
 
-            cmprList.remove(index);
+            } catch (Exception excep) {
+                System.out.println("no player to remove!");
+            }
 
         }
     }
 
+    // MODIFIES: cmprList
+    // EFFECTS: loads the previously saved list using JsonReader, throws IOException if it is unable to read from
+    // given storing location
     private class LoadListListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -242,6 +321,9 @@ public class PlayerStatApp extends JFrame {
         }
     }
 
+    // MODIFIES: guiCompareList
+    // EFFECTS: saves current cmprList using JsonWriter by writing to a comparelist, throws
+    // FileNotFoundException if unable to write to file
     private class SaveListListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -273,6 +355,16 @@ public class PlayerStatApp extends JFrame {
 
         }
     }
+
+
+
+
+
+
+
+
+
+
 
     // EFFECTS: process command from user to take to other parts of app
     private void processCommand(String command) {

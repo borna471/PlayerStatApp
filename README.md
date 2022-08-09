@@ -66,3 +66,22 @@ desired players to a compare-list
 compare (players in my compare list)
 - As a user, I want to be able to load a previously saved
 compare list of players
+
+
+## Instruction for Grader
+
+- To use the add player function: enter a player's name with the right capitalization and 
+press enter, their name, position, and some statistics will show up beside their name at 
+the bottom of the app. Currently the only available options are the following players: Messi,
+Ronaldo, Benzema, Lewandowski, Salah. Enter their names as they have been written here and 
+the add player button will complete the task
+- To remove a player, select them in the list and press the remove button. Their name will 
+disappear and be removed from the list object displayed
+- The visual component is in the form of an image, which is shown in
+the form of a photo that appears on the right side of the 
+frame, a picture of a goat when the name "Messi" is 
+entered and then button "add player" is pressed. Full screen the app
+to view everything better after this image appears
+- Press the 'save current list' button to save the current list seen at the bottom of the screen
+- press the 'load saved list' button to load and present the previously saved list at the 
+bottom of the screen

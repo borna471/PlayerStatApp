@@ -62,7 +62,7 @@ public class PlayerList {
     // REQUIRES: a filtered list of players by position (ie. only one position in the given list)
     // EFFECTS: brings most relevant stats to that position to the top
 
-//    @SuppressWarnings("methodlength")
+//
 //    public List<Player> showRelStats() {
 //        List<Player> showRelList = new ArrayList<>();
 //

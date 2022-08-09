@@ -72,7 +72,7 @@ public class PlayerStatApp extends JFrame {
         boolean keepGoing = true;
         String command = null;
 
-        init();
+        // init();
 
         while (keepGoing) {
             displayMenu();
@@ -394,7 +394,7 @@ public class PlayerStatApp extends JFrame {
         input.useDelimiter("\n");
         System.out.println("enter 'back' to return to main menu\n");
         if (input.next() == "back") {
-            init();
+            // init();
         }
 
     }
@@ -429,7 +429,7 @@ public class PlayerStatApp extends JFrame {
         } else if (command.equals("new")) {
             newListTool();
         } else {
-            init();
+            // init();
         }
 //
 //
@@ -524,11 +524,11 @@ public class PlayerStatApp extends JFrame {
         System.out.println("- enter 'save' to save the current compareList\n");
         backOrSave = input.next();
         if (backOrSave.equals("back")) {
-            init();
+            // init();
         } else if (backOrSave.equals("save")) {
             saveCompareList();
             System.out.println("\n");
-            init();
+            // init();
         }
 
     }
@@ -603,61 +603,61 @@ public class PlayerStatApp extends JFrame {
 
 
     // EFFECTS: initialize the needed values throughout the application
-    @SuppressWarnings("methodlength")
-    private void init() {
-
-
-        player1 = new Player("Messi", "att", "winger",
-                11, 14, 34, 9,
-                115, 39, 0, 76, 87,
-                0.32, 0.74, 0.68, 2.56);
-
-        player2 = new Player("Ronaldo", "att", "striker",
-                24, 3, 39, 21,
-                133, 55, 0, 36, 30,
-                0.62, 0.69, 0.62, 0.77);
-
-        player3 = new Player("Benzema", "att", "centre-forward",
-                42, 13, 44, 33,
-                174, 81, 0, 0, 75,
-                1.01, 1.34, 1.08, 1.22);
-
-        player4 = new Player("Lewandowski", "att", "striker",
-                50, 6, 46, 42,
-                191, 96, 0, 0, 61,
-                1.13, 1.26, 1.08, 1.01);
-
-        player5 = new Player("Salah", "att", "winger",
-                31, 15, 51, 25,
-                184, 70, 0, 0, 71,
-                0.70, 1.03, 0.90, 1.96);
-
-
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
-
-        plrList = new PlayerList();
-        plrList.getPlayerList().add(player1);
-        plrList.getPlayerList().add(player2);
-        plrList.getPlayerList().add(player3);
-        plrList.getPlayerList().add(player4);
-        plrList.getPlayerList().add(player5);
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
-    }
-
-    public class SplashScreen extends JWindow {
-        private static final long serialVersionUID = 1L;
-        private JPanel contentPane;
-
-        public SplashScreen(JFrame frame, String msg) {
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setBounds(100, 100, 100, 100);
-            contentPane = new JPanel();
-            contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-            contentPane.setLayout(new BorderLayout(0, 0));
-            setContentPane(contentPane);
-        }
-    }
+//
+//    private void init() {
+//
+//
+//        player1 = new Player("Messi", "att", "winger",
+//                11, 14, 34, 9,
+//                115, 39, 0, 76, 87,
+//                0.32, 0.74, 0.68, 2.56);
+//
+//        player2 = new Player("Ronaldo", "att", "striker",
+//                24, 3, 39, 21,
+//                133, 55, 0, 36, 30,
+//                0.62, 0.69, 0.62, 0.77);
+//
+//        player3 = new Player("Benzema", "att", "centre-forward",
+//                42, 13, 44, 33,
+//                174, 81, 0, 0, 75,
+//                1.01, 1.34, 1.08, 1.22);
+//
+//        player4 = new Player("Lewandowski", "att", "striker",
+//                50, 6, 46, 42,
+//                191, 96, 0, 0, 61,
+//                1.13, 1.26, 1.08, 1.01);
+//
+//        player5 = new Player("Salah", "att", "winger",
+//                31, 15, 51, 25,
+//                184, 70, 0, 0, 71,
+//                0.70, 1.03, 0.90, 1.96);
+//
+//
+//        jsonWriter = new JsonWriter(JSON_STORE);
+//        jsonReader = new JsonReader(JSON_STORE);
+//
+//        plrList = new PlayerList();
+//        plrList.getPlayerList().add(player1);
+//        plrList.getPlayerList().add(player2);
+//        plrList.getPlayerList().add(player3);
+//        plrList.getPlayerList().add(player4);
+//        plrList.getPlayerList().add(player5);
+//        input = new Scanner(System.in);
+//        input.useDelimiter("\n");
+//    }
+//
+//    public class SplashScreen extends JWindow {
+//        private static final long serialVersionUID = 1L;
+//        private JPanel contentPane;
+//
+//        public SplashScreen(JFrame frame, String msg) {
+//            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            setBounds(100, 100, 100, 100);
+//            contentPane = new JPanel();
+//            contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+//            contentPane.setLayout(new BorderLayout(0, 0));
+//            setContentPane(contentPane);
+//        }
+//    }
 
 }

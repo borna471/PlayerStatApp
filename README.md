@@ -85,3 +85,19 @@ to view everything better after this image appears
 - Press the 'save current list' button to save the current list seen at the bottom of the screen
 - press the 'load saved list' button to load and present the previously saved list at the 
 bottom of the screen
+
+
+### Phase 4: Task 2 (sample eventLog)
+
+Thu Aug 11 14:36:28 PDT 2022 \
+Messi was added to the list \
+Thu Aug 11 14:36:52 PDT 2022 \
+Ronaldo was added to the list \
+Thu Aug 11 14:36:55 PDT 2022 \
+Messi was removed from the list \
+Thu Aug 11 14:37:03 PDT 2022 \
+Benzema was added to the list  \
+Thu Aug 11 14:37:03 PDT 2022 \
+Ronaldo was added to the list \
+Thu Aug 11 14:37:07 PDT 2022 \
+Ronaldo was removed from the list 

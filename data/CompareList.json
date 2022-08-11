@@ -8,19 +8,11 @@
         "goals": 42
     },
     {
-        "assists": 15,
-        "name": "Salah",
-        "position": "winger",
-        "category": "att",
-        "matches": 51,
-        "goals": 31
-    },
-    {
-        "assists": 6,
-        "name": "Lewandowski",
+        "assists": 3,
+        "name": "Ronaldo",
         "position": "striker",
         "category": "att",
-        "matches": 46,
-        "goals": 50
+        "matches": 39,
+        "goals": 24
     }
 ]}

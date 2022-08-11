@@ -21,6 +21,7 @@ public class CompareList implements Writable {
     public boolean addPlayer(Player player) {
 
         compareList.add(player);
+        EventLog.getInstance().logEvent(new Event(player.getName() + " was added to the list"));
 
         return true;
 
@@ -52,4 +53,8 @@ public class CompareList implements Writable {
     }
 
 
+    public void removePlayer(Player plr) {
+        compareList.remove(plr);
+        EventLog.getInstance().logEvent(new Event(plr.getName() + " was removed from the list"));
+    }
 }

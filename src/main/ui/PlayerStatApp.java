@@ -1,14 +1,15 @@
 package ui;
 
 import model.CompareList;
+import model.Event;
+import model.EventLog;
 import model.Player;
 import model.PlayerList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -62,8 +63,18 @@ public class PlayerStatApp extends JFrame {
     public PlayerStatApp() {
         super("Player Stat App");
 
-        initGraphics();
-        // initApp();
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                initGraphics();
+                // initApp();
+                EventLog log = EventLog.getInstance();
+                for (Event event : log) {
+                    System.out.println(event.toString());
+                }
+            }
+        });
+
     }
 
     // EFFECTS: intialize console app, bring up needed aspects to get it running
@@ -125,6 +136,8 @@ public class PlayerStatApp extends JFrame {
         plrList.getPlayerList().add(player4);
         plrList.getPlayerList().add(player5);
 
+        compareList = new CompareList();
+
         cmprList = new DefaultListModel();
         // cmprList.addElement(player1);
         // cmprList.addElement(player2);
@@ -141,12 +154,26 @@ public class PlayerStatApp extends JFrame {
         frame.setVisible(true);
         frame.setTitle("Player Stat App");
 
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                displayLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
+
         panel.setBorder(BorderFactory.createEmptyBorder(200, 200, 200, 200));
         panel.setLayout(new GridLayout(0, 1));
         // frame.setContentPane(panel);
 
         displayMenuGUI();
 
+    }
+
+    private void displayLog(EventLog instance) {
+        for (Event event : instance) {
+            System.out.println(event.toString());
+        }
     }
 
     // MODIFIES: frame, panel
@@ -241,8 +268,11 @@ public class PlayerStatApp extends JFrame {
                                     + player.getGs() + " "
                                     + player.getAst() + " "
                                     + player.getMts());
+
+                    compareList.addPlayer(player);
                 }
             }
+
 
             if (plr.equals(player1.getName())) {
 
@@ -279,6 +309,7 @@ public class PlayerStatApp extends JFrame {
         }
     }
 
+    
     // MODIFIES: cmprList
     // EFFECTS: method called when remove player button is pressed, removes the selected player in the list from the
     // list
@@ -289,7 +320,28 @@ public class PlayerStatApp extends JFrame {
 
             int index = playerList.getSelectedIndex();
             try {
+                Object player;
+                player = cmprList.get(index);
+                String playerName;
+                // playerName = player.toString().substring();
+                playerName = player.toString().substring(0, player.toString().indexOf(" "));
+
                 cmprList.remove(index);
+
+                Player plr;
+                plr = new Player("Messi", "att", "winger",
+                        11, 14, 34, 9,
+                        115, 39, 0, 76, 87,
+                        0.32, 0.74, 0.68, 2.56);
+
+                for (Player plyr : plrList.getPlayerList()) {
+                    if (playerName.equals(plyr.getName())) {
+                        plr = plyr;
+                    }
+                }
+
+                compareList.removePlayer(plr);
+
 
             } catch (Exception excep) {
                 System.out.println("no player to remove!");

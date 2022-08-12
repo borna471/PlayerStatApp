@@ -101,3 +101,13 @@ Thu Aug 11 14:37:03 PDT 2022 \
 Ronaldo was added to the list \
 Thu Aug 11 14:37:07 PDT 2022 \
 Ronaldo was removed from the list 
+
+
+### Phase 4: Task 3 (reflection)
+
+- To improve my design, I would make my model classes 
+more accessible to the GUI so they arent only used for the backend mainly
+- A lot of my methods and features on the GUI would break completely
+if I was to make any changes to the data or content on the ListModel used
+- I would also improve my UI in my phase 3 submission to be more clean,
+especially when the visual aspect shows up

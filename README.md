@@ -1,4 +1,4 @@
-# My Personal Project
+# Player Stat App
 
 
 ## What will the application do?

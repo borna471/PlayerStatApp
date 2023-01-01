@@ -48,15 +48,11 @@ issue to the best degree possible.
 assists, goals per game, games played, goals in last 10 mins, etc.)
 for the last season
 
-// - As a user, I want to be able to see relevant 
-// statistics to players prioritized based on their positions
-
 - As a user, I want to be able to compare players, by adding
 desired players to a compare-list
 
 - As a user, I want to be able to filter players by positions
 
-// not a proper feature, must add new one
 - As a user, I want to be able to navigate between these tabs
   and features through a menu
 

@@ -7,6 +7,8 @@ The application will be a soccer statistics app that allows
 easy access to **player statistics** **across seasons** and different 
 measures, with **comparison tools** as well.
 
+#### Demo Video
+https://www.loom.com/share/53e40056423e4f8e89c25061976cc67e
 
 ## Who will use it?
 

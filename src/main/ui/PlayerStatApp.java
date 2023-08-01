@@ -104,27 +104,27 @@ public class PlayerStatApp extends JFrame {
     @SuppressWarnings("methodlength")
     private void initGraphics() {
 
-        player1 = new Player("Messi", "att", "winger",
+        player1 = new Player("Messi", "Att", "Winger",
                 11, 14, 34, 9,
                 115, 39, 0, 76, 87,
                 0.32, 0.74, 0.68, 2.56);
 
-        player2 = new Player("Ronaldo", "att", "striker",
+        player2 = new Player("Ronaldo", "Att", "Striker",
                 24, 3, 39, 21,
                 133, 55, 0, 36, 30,
                 0.62, 0.69, 0.62, 0.77);
 
-        player3 = new Player("Benzema", "att", "centre-forward",
+        player3 = new Player("Benzema", "Att", "Centre-forward",
                 42, 13, 44, 33,
                 174, 81, 0, 0, 75,
                 1.01, 1.34, 1.08, 1.22);
 
-        player4 = new Player("Lewandowski", "att", "striker",
+        player4 = new Player("Lewandowski", "Att", "Striker",
                 50, 6, 46, 42,
                 191, 96, 0, 0, 61,
                 1.13, 1.26, 1.08, 1.01);
 
-        player5 = new Player("Salah", "att", "winger",
+        player5 = new Player("Salah", "Att", "Winger",
                 31, 15, 51, 25,
                 184, 70, 0, 0, 71,
                 0.70, 1.03, 0.90, 1.96);

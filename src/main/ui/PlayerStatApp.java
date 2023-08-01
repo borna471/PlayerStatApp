@@ -109,7 +109,7 @@ public class PlayerStatApp extends JFrame {
                 115, 39, 0, 76, 87,
                 0.32, 0.74, 0.68, 2.56);
 
-        player2 = new Player("Ronaldo", "Att", "Striker",
+        player2 = new Player("Ronaldo", "Att", " Striker",
                 24, 3, 39, 21,
                 133, 55, 0, 36, 30,
                 0.62, 0.69, 0.62, 0.77);
@@ -124,10 +124,11 @@ public class PlayerStatApp extends JFrame {
                 191, 96, 0, 0, 61,
                 1.13, 1.26, 1.08, 1.01);
 
-        player5 = new Player("Salah", "Att", "Winger",
+        player5 = new Player("Salah", "    Att", " Winger",
                 31, 15, 51, 25,
                 184, 70, 0, 0, 71,
                 0.70, 1.03, 0.90, 1.96);
+
 
         plrList = new PlayerList();
         plrList.getPlayerList().add(player1);
@@ -261,12 +262,21 @@ public class PlayerStatApp extends JFrame {
 
             for (Player player : plrList.getPlayerList()) {
                 if (player.getName().equals(plr)) {
+                    if (cmprList.isEmpty()) {
+                        cmprList.add(cmprList.size(),
+                                "Name" + "    "
+                                        + "Type" + " "
+                                        + "Position" + " "
+                                        + "Goals" + " "
+                                        + "Assists" + " "
+                                        + "Matches");
+                    }
                     cmprList.add(cmprList.size(),
-                            player.getName() + " "
-                            + player.getCat() + " "
-                            + player.getPost() + " "
-                                    + player.getGs() + " "
-                                    + player.getAst() + " "
+                            player.getName() + "  "
+                            + player.getCat() + "   "
+                            + player.getPost() + "   "
+                                    + player.getGs() + "     "
+                                    + player.getAst() + "       "
                                     + player.getMts());
 
                     compareList.addPlayer(player);
